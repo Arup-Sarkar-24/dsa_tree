@@ -49,7 +49,12 @@
 - **Theta (θ)**: Describes the **average-case** scenario or general performance as input grows.
 
 
-![img.png](img.png)
 
 ### BigO(1)- Constant Time
 -** A**: No matter the size of the array, accessing any element takes a constant time(1 step).
+
+
+### Recursion and Backtracking
+
+## Q1) What is Recursion?
+   => A function doing same taks autometically.
