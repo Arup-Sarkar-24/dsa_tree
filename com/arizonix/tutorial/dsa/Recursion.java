@@ -64,7 +64,7 @@ public class Recursion {
     }
 
     static int toDecimalRecursive(int binary,int index) {
-        String strBinary =  Integer.toString(binary);
+        String strBinary = Integer.toString(binary);
         if (index == strBinary.length()) {
             return 0;
         }
@@ -75,9 +75,6 @@ public class Recursion {
         return ((bit * (int)Math.pow(2, power)) + toDecimalRecursive(binary, index+1));
     }
 
-
-
- */
     static void reverseNumber(int num){
         if (num == 0)
             return;
@@ -85,12 +82,73 @@ public class Recursion {
         reverseNumber(num/10);
     }
 
+    //without recursion
+    static void reverseNumWithStr(int num){
+       String numStr = Integer.toString(num);
+       String newNumStr ="";
+       for(int i = numStr.length() -1; i>=0; i--){
+           newNumStr+=numStr.charAt(i);
+       }
+        System.out.println(Integer.parseInt(newNumStr));
+    }
+
+    //with recursion
+    static String reverseNumWithStr(int num,int index){
+        //String numStr = Integer.toString(num);
+        String numStr = ""+num;
+        index = numStr.length()-1;
+        if (index == 0)
+            return (""+numStr.charAt(0));
+
+        String newNumStr ="";
+        newNumStr +=numStr.charAt(index);
+        return (newNumStr+reverseNumWithStr(num/10,(index-1)));
+    }
+
+    //String reverse
+    static void reverseStrWithRecr(int num ,int index ){
+        String inp =""+num;
+        if (index == inp.length())
+            return;
+        reverseStrWithRecr(num,index+1);
+        String res ="";
+        res = res+inp.charAt(index);
+        System.out.print(res);
+    }
+
+ */
+
+    //Array reverse
+    static void reverseArrWithRecur(char[] arr  ) {
+        recur(arr , 0);
+    }
+
+    static void recur(char[] arr, int index){
+        if (index == arr.length/2)
+            return;
+        swap(arr,index,arr.length-index-1);
+        recur(arr,index+1);
+    }
+
+    static void swap(char[] arr, int i1, int i2){
+        char temp = arr[i1];
+        arr[i1]=arr[i2];
+        arr[i2] =temp;
+    }
+
+
     public static void main(String[] args) {
         //fun2(5);
         //System.out.println(fun4(4));
         //toBinary(4);
         //toDecimal(100);
         //System.out.println(toDecimalRecursive(100,0));
-        reverseNumber(5463010);
+        //reverseNumber(-19);
+        //reverseNumWithStr(654);
+        //System.out.println();
+        //reverseStrWithRecr(600,0);
+        char[] arr = {'A','R','U','P'};
+        reverseArrWithRecur(arr);
+        System.out.print(arr);
     }
 }
